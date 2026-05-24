@@ -114,3 +114,11 @@ MR 合并到 `dev` 前必须满足：
 ## 7. 何时读 [reference.md](reference.md)
 
 需要完整规范、详细场景说明、CI 集成示例、Changelog 自动化工具选型等深度内容时再读。日常判断用本文件足够。
+
+## 8. 安装本 Skill
+
+```bash
+npx skills add Links17/csg-git-skill -g -a cursor -a claude-code -a codex -y
+```
+
+详见仓库 [README.md](https://github.com/Links17/csg-git-skill#安装)。
