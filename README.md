@@ -90,7 +90,7 @@ npx skills remove csg-git-skill -g -a '*' -y
 | --- | --- |
 | 版本号 | `X.Y.Z`；提测 `vX.Y.Z-alpha.N`，发布 `vX.Y.Z` |
 | 长期分支 | `main`（生产）、`dev`（提测）；禁止直接 push |
-| 临时分支 | `feature/vX.Y.Z/*`、`fix/*`、`release/vX.Y.Z`、`hotfix/*` 等 |
+| 临时分支 | `feature` 或 `feat`/vX.Y.Z/*、`fix/*`、`release/vX.Y.Z`、`hotfix/*` 等；描述段可用 `-` 或 `_` |
 | 提交信息 | `<type>(<scope>): <subject>`；破坏性变更用 `!` 或 `BREAKING CHANGE:` |
 
 细节见 [`SKILL.md`](SKILL.md) 与 [`reference.md`](reference.md)。

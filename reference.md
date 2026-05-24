@@ -85,7 +85,7 @@
 
 | 分支前缀 | 用途 | 来源分支 | 合并目标 |
 | --- | --- | --- | --- |
-| `feature/vX.Y.Z/*` | 指定目标版本的新功能开发 | `dev` | `dev` |
+| `feature` 或 `feat`/vX.Y.Z/* | 指定目标版本的新功能开发 | `dev` | `dev` |
 | `fix/vX.Y.Z/*` | 指定目标版本的普通缺陷修复 | `dev` | `dev` |
 | `perf/vX.Y.Z/*` | 指定目标版本的性能优化 | `dev` | `dev` |
 | `refactor/vX.Y.Z/*` | 指定目标版本的重构 | `dev` | `dev` |
@@ -94,21 +94,31 @@
 
 ### 3.3 命名约定
 
-- 全部使用小写，单词间用 `-` 分隔，不使用大写或下划线。
+- 全部使用小写，不使用大写。
 - 功能、修复、优化类分支统一携带目标版本号：`<type>/vX.Y.Z/<description>`。
+- **功能类前缀**：`feature` 或 `feat` 均可（`feat` 与 Conventional Commits 的 `feat` 对齐；`feature` 与 Git Flow 用词一致）。
+- **描述段 `<description>`**：推荐用 `-` 连接（如 `app-common`），亦允许 `_`（如 `app_common`），同一仓库内建议统一一种风格。
 - 推荐携带任务编号或简短描述，便于追溯。
 
 示例：
 
 ```text
 feature/v1.2.0/user-login
+feat/v1.4.1/app-common
+feat/v1.4.1/app_common
 fix/v1.2.0/login-token-expire
 perf/v1.2.0/list-query-cache
 release/v1.2.0
-hotfix/v1.1.3-payment-timeout
+hotfix/v1.1.3/payment-timeout
 ```
 
-> `feature/vX.Y.Z/*` 合并到 `dev` 表示进入提测流程；在该 commit 上打出 `vX.Y.Z-alpha.N` Tag 并部署到测试环境后，才算正式产出本次提测版本（CI 自动或开发手动均可）。
+**合规正则（校验用）**：
+
+```text
+^(feat|feature|fix|perf|refactor|hotfix)/v\d+\.\d+\.\d+(?:/[a-z0-9][a-z0-9\-_]*)?$
+```
+
+> `feature` / `feat` + `vX.Y.Z/*` 合并到 `dev` 表示进入提测流程；在该 commit 上打出 `vX.Y.Z-alpha.N` Tag 并部署到测试环境后，才算正式产出本次提测版本（CI 自动或开发手动均可）。
 
 ---
 

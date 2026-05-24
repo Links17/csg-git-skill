@@ -22,18 +22,18 @@ description: Git 版本号、分支命名、提交信息与提测/发布/Hotfix 
 
 长期分支：`main`（生产）、`dev`（提测/测试环境）。两条均不可直接 push，只能 MR 合入。
 
-临时分支统一格式 `<type>/vX.Y.Z/<description>`，全小写、`-` 连接：
+临时分支统一格式 `<type>/vX.Y.Z/<description>`，全小写；描述段可用 `-` 或 `_` 连接（推荐 `-`）。
 
 | 前缀 | 用途 | 来源 | 合并目标 |
 | --- | --- | --- | --- |
-| `feature/vX.Y.Z/*` | 新功能 | `dev` | `dev` |
+| `feature` 或 `feat`/vX.Y.Z/* | 新功能 | `dev` | `dev` |
 | `fix/vX.Y.Z/*` | 普通缺陷修复 | `dev` | `dev` |
 | `perf/vX.Y.Z/*` | 性能优化 | `dev` | `dev` |
 | `refactor/vX.Y.Z/*` | 重构 | `dev` | `dev` |
 | `release/vX.Y.Z` | 发布准备 | `dev` | `main` + 回合 `dev` |
 | `hotfix/vX.Y.Z/*` | 生产紧急修复 | `main` | `main` + 回合 `dev` |
 
-示例：`feature/v1.2.0/user-login`、`hotfix/v1.1.3/payment-timeout`。
+示例：`feature/v1.2.0/user-login`、`feat/v1.4.1/app-common`、`feat/v1.4.1/app_common`、`hotfix/v1.1.3/payment-timeout`。
 
 ## 3. 提交信息（Conventional Commits）
 
@@ -85,7 +85,7 @@ MR 合并到 `dev` 前必须满足：
 
 > Reviewer Code Review 与 CI（lint / 测试 / 构建）不作为合并到 `dev` 的硬性门槛；若仓库已配置则按其结果流转，开发自行决定是否等候。
 
-合并后流程：部署测试环境 → 在合入 commit 上打 `vX.Y.Z-alpha.N` Tag（CI 自动或开发手动）→ 通知 QA 用该 Tag 测试。提测期发现 Bug 必须回到原 `feature/*` 分支修，**不要直接改 `dev`**，重新合入后递增为 `alpha.(N+1)`。
+合并后流程：部署测试环境 → 在合入 commit 上打 `vX.Y.Z-alpha.N` Tag（CI 自动或开发手动）→ 通知 QA 用该 Tag 测试。提测期发现 Bug 必须回到原 `feature/*` / `feat/*` 分支修，**不要直接改 `dev`**，重新合入后递增为 `alpha.(N+1)`。
 
 ### 5.2 常规发布（提测通过后）
 
