@@ -1,6 +1,6 @@
 ---
 name: csg-git-skill
-description: Git 版本号、分支命名、提交信息与提测/发布/Hotfix 流程规范，基于 SemVer 2.0.0 + Conventional Commits + 简化 Git Flow，包含 dev 提测 alpha Tag 管控。当用户要为仓库制定 git 规范、判断版本号应升 X/Y/Z 哪一位、给分支取名（feature/fix/hotfix/release）、写 commit message、走提测流程合并到 dev、走发布流程合到 main、打 Tag、生成 Changelog 时使用。
+description: Git 版本号、分支命名、提交信息与提测/发布/Hotfix 流程规范，基于 SemVer 2.0.0 + Conventional Commits + 简化 Git Flow，包含 dev 提测 alpha Tag 管控与 CSG 提测文档/Base 流程。当用户要为仓库制定 git 规范、判断版本号应升 X/Y/Z 哪一位、给分支取名（feature/fix/hotfix/release）、写 commit message、走提测流程合并到 dev、创建提测文档、写入提测 Base、创建服务子记录、通知测试负责人、走发布流程合到 main、打 Tag、生成 Changelog 时使用。
 ---
 
 # Git 版本与发布规范
@@ -111,11 +111,27 @@ MR 合并到 `dev` 前必须满足：
 - 一个 PR 聚焦单一目标，提交信息符合本规范。
 - Reviewer 与 CI **不是**硬性门槛；仓库自行决定是否启用，但启用后建议遵守对应仓库的合并策略。
 
-## 7. 何时读 [reference.md](reference.md)
+## 7. CSG 提测文档与 Base
 
-需要完整规范、详细场景说明、CI 集成示例、Changelog 自动化工具选型等深度内容时再读。日常判断用本文件足够。
+当用户要求“写提测文档”“写到提测 Base”“补服务子记录”“发给测试负责人”时，读取 [test-release.md](test-release.md)，按其中流程执行：
 
-## 8. 安装本 Skill
+1. 收集项目、版本、域名、namespace、仓库、更新说明、提测人、测试人。
+2. 生成本地 Markdown 提测文档。
+3. 创建飞书 Docx 提测文档。
+4. 写入提测 Base 主记录，并把“提测文档”更新为飞书文档链接。
+5. 创建服务子记录并关联主记录。
+6. 将提测总表和提测文档发送给指定测试负责人。
+
+写 Base 前必须先读取真实字段结构；人员字段必须先查通讯录拿 open_id；不要猜字段名、用户 ID、表 ID 或记录 ID。
+
+## 8. 何时读详细参考
+
+- Git 版本、分支、Tag、发布流程：读 [reference.md](reference.md)
+- 提测文档、飞书 Docx、Base 主记录/子记录、通知流程：读 [test-release.md](test-release.md)
+
+需要完整规范、详细场景说明、CI 集成示例、Changelog 自动化工具选型等深度内容时再读。日常 Git 判断用本文件足够。
+
+## 9. 安装本 Skill
 
 ```bash
 npx skills add Links17/csg-git-skill -g -a cursor -a claude-code -a codex -y

@@ -3,7 +3,8 @@
 面向 AI 编码助手的 **Git 版本与发布规范** Skill：SemVer 2.0.0、Conventional Commits、简化 Git Flow，含 `dev` 提测 `alpha` Tag 管控。
 
 - 速查：[`SKILL.md`](SKILL.md)
-- 完整规范：[`reference.md`](reference.md)
+- 完整 Git 规范：[`reference.md`](reference.md)
+- 提测文档与 Base 流程：[`test-release.md`](test-release.md)
 - 仓库：<https://github.com/Links17/csg-git-skill>
 
 ## 支持平台
@@ -92,8 +93,9 @@ npx skills remove csg-git-skill -g -a '*' -y
 | 长期分支 | `main`（生产）、`dev`（提测）；禁止直接 push |
 | 临时分支 | `feature` 或 `feat`/vX.Y.Z/*、`fix/*`、`release/vX.Y.Z`、`hotfix/*` 等；描述段可用 `-` 或 `_` |
 | 提交信息 | `<type>(<scope>): <subject>`；破坏性变更用 `!` 或 `BREAKING CHANGE:` |
+| 提测资料 | 生成本地提测文档、创建飞书 Docx、写入提测 Base 主记录/服务子记录、通知测试负责人 |
 
-细节见 [`SKILL.md`](SKILL.md) 与 [`reference.md`](reference.md)。
+细节见 [`SKILL.md`](SKILL.md)、[`reference.md`](reference.md) 与 [`test-release.md`](test-release.md)。
 
 ## 许可
 
